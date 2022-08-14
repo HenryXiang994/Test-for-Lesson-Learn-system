@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            h1 {
+                color: blue;
+            }
+        </style>
+        <link rel="stylesheet" href="./css/style.css">
+        <title>We All Love Studying?!</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>
+                Come to Study?
+            </h1>
+            <p id="firstp">
+                <em>欢迎来到本网站，请选择你此时的选项</em>
+            </p>
+            <br>
+                <p>
+                    制作人：杨鑫  学号：...4629
+                </p>
+                <p>
+                    <a href="https://blog.csdn.net/CCmago?spm=1000.2115.3001.5343">个人主页</a>
+                </p>
+            <br>
+            <div class="block">
+                <h3 id="video">视频休闲</h3><img src="./img/vcat.jpg">
+                  <div class="list">
+                      <ul>
+                          <li><a href="https://www.bilibili.com/">当然是哔哩哔哩啦</a></li>
+                          <br>
+                          <li><a href="https://v.qq.com/?ptag=qqbsc">我选择腾讯视频</a></li>
+                          <br>
+                          <li><a href="https://www.iqiyi.com/?vfm=m_303_qqll">看视频还是爱奇艺强</a></li>
+                      </ul>
+                  </div>
+            </div>
+            <div class="block">
+                <h3 id="video">快乐学习？</h3><img src="./img/swe.jpg">
+                  <div class="list">
+                      <ul>
+                          <li><a href="https://www.bilibili.com/">还是哔哩哔哩啦（有面子）</a></li>
+                          <br>
+                          <li><a href="https://https://www.csdn.net/">程序猿之天堂（CSDN）</a></li>
+                          <br>
+                          <li><a href="https://www.icourse163.org/">中国mooc，来康康？</a></li>
+                      </ul>
+                  </div>
+            </div>
+            <div class="block">
+                <h3 id="video">痛苦游戏？</h3><img src="./img/dgame.jpg">
+                  <div class="list">
+                      <ul>
+                          <li><a href="http://www.4399.com/">童年回忆（是什么呢？）</a></li>
+                          <br>
+                          <li><a href="https://lol.qq.com/act/a20201211startgame/index.shtml?e_code=507042">来一把紧张刺激的英雄联盟！</a></li>
+                          <br>
+                          <li><a href="http://www.4399.com/flash/18012.htm#search3">疯狂的戴夫</a></li>
+                      </ul>
+                  </div>
+            </div>
+            <div class="clear"></div>
+            <h2>别走开！！！</h2>
+            <div class="last-block">
+                <h3>来做一道思维题？</h3>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;一个人在林中散步时，无意中听到了几个强盗在商量如何分赃。强盗们说，如果每人分6匹布，则剩余5匹;如果每人分7匹布，则少8匹。请问：共有几个强盗?几匹布?
+                </p>
+                <p>
+                    &nbsp;&nbsp;&nbsp;答案在黑框内
+                </p>
+                <div class="ans">
+                    13个强盗  83布匹
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </body>
+</html>
