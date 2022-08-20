@@ -1,527 +1,298 @@
+<!DOCTYPE html>
 
-<!doctype html>
-<html lang="en" ng-app="app">
-<head>
+<!-- 界面普通的网站？？技术网站并不关注界面-->
+<!-- 上传Excel功能-->
+<!--  -->
+<!--  -->
+<!--  -->
+<!--  -->
+
+
+<html>
+    <head>
+    
     <meta charset="utf-8">
-    <meta name="renderer" content="webkit"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, maximum-scale=1">
-    <title>页面标题</title>
-    <link rel="shortcut icon" href="/static/img/favicon.ico" />
-    <link rel="stylesheet" href="/static/plugs/awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/static/css/style.css?v=2022.01.19" media="all"/>
-    <link rel="stylesheet" href="/static/js/bootstrap-4.1.3/css/bootstrap.css">
+     
+    <!--jquery-->
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+
+    <!--popper-->
+    <script src="/static/js/popper.js"></script>
+
+    <!--bootstrap-->
+    <link href="/static/js/bootstrap-4.1.3/css/bootstrap.css" rel="stylesheet">
+    <script src="/static/js/bootstrap-4.1.3/js/bootstrap.js"></script>
+
+    <!-- bootstrap-table -->
     <link rel="stylesheet" href="/static/js/bootstrap-table-1.12.1/bootstrap-table.min.css">
-    <link rel="stylesheet" href="/static/layui/css/layui.css">
-    <style type="text/css">
-        /*设置表格宽度有效*/
-        .table {table-layout:fixed;}
-        body {
-            overflow-x: hidden;
-            overflow-y: hidden;
-        }
+    <script src="/static/js/bootstrap-table-1.12.1/bootstrap-table.min.js"></script>
 
-        /*Input表格输入*/
-        .fSuggest {
-            display: none;
-            position: absolute;
-            z-index: 999;
-            min-width: 300px;
-            min-height: 120px;
-            background-color: #fff;
-            border-color: #1ab394;
-            overflow-y: scroll;
-            max-height: 205px;
-            border: solid 1px #1ab394;
-        }
+    <!--layer-->
+    <script src="/static/js/layer-3.1.1/layer.js"></script>
 
-        /*Angular*/
-        [ng-cloak]{
-            display:none !important
-        }
-    </style>
-    <!--当前页面CSS-->
-    
-<style>
-    .is-hidden{
-        display: none;
-    }
-</style>
+    <!-- 时间控件 -->
+    <script language="javascript" src="/static/js/My97DatePicker/WdatePicker.js?ver=124122081601"></script>
 
-</head>
-<body>
-<!--当前页面主体-->
-<main role="main" ng-cloak >
+    <!-- 时间控件 -->
+    <link rel="stylesheet" href="/static/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+    <script src="/static/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+    <script src="/static/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
 
-<div class="ibox-title" >
-    <h5>ECO Tracking List</h5>
-    <div class="float-right" style="margin: 10px 0px;">
-        <button type="button" class="btn btn-info btn-sm" pt-export="data_list"><i class="fa fa-reply-all"></i> Export</button>
+    <!-- 图表js -->
+    <script src="/static/js/echarts.min.js?ver=122081601"></script>
+
+    <!-- Echarts Option 数据公共js -->
+    <script src="/static/js/echart-option.js?ver=11220816012422"></script>
+
+    <!--echarts主题-->
+    <script src="/static/js/echarts-theme/shine.js"></script>
+
+    <!--表格导出Excel-->
+    <script src="/static/js/export/base64.min.js"></script>
+    <script src="/static/js/export/tableExport.js"></script>
+
+    <!-- 公共的js -->
+    <script src="/static/js/function.js?ver=2122081601"></script>
+    <script src="/static/js/frame.js?ver=122081601am22"></script>
+    <script src="/static/js/bst.js?ver=2322081601"></script>
+    <script src="/static/js/bsEdit.js?ver=22081601"></script>
+    <script src="/static/js/fs.js?ver=34522081601"></script>
+    <script src="/static/js/crypto/base64.js"></script>
+
+    </head>
+
+    <title>Logitech CP&G ME xxxx Data list</title>
+
+    <body onload="timenow()">
+
+
+
+    <!--ID List -->
+    <!--Create report engineer name: CTENGNAME >
+    <!- Create report Date: CTDATE >
+    <!- Create report Part Name: CTPTNAME >
+    <!- Create report issue Type: CTISTYPE >
+    <!- Create report Description: CTDESCRIP >
+
+    <!- Search report engineer name: SCENGNAME >
+    <!- Search report Date: SCDATE >
+    <!- Search report Part Name: SCPTNAME >
+    <!- Search report issue Type: SCISTYPE >
+    <!- Search report Description: SCDESCRIP >
+
+
+
+    <!- ------------------------------------------------------------------------------------------>
+
+
+
+    <!-- 顶部蓝色标题栏 -->
+      <div 
+      style="color: rgb(255, 255, 255); background: rgb(36, 148, 242); border: 0px dashed currentcolor; text-align:left">
+     <h1><span style="color: #ffffff; font-size: 40px; float:none; ">Logitech CP&G ME xxxx Data List</span></h1>
+      </div>
+
+    <!-- 紫色分割线 -->
+      <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>
+
+
+
+ <!---- ------------------------------------------------------------------------------------------>
+
+   <!-- 中部蓝色 Create form -->
+    <div 
+    style="color: rgb(255, 255, 255); background: rgb(36, 148, 242); border: 0px dashed currentcolor; text-align:left">
+    <h3><span style="color: #ffffff; font-size: 25px; float:none; ">Create xxxx Data Form</span></h3>
     </div>
-</div>
-<div class="container-fluid" ng-controller="rejectionIndexController" >
-    <!-- 表单搜索 -->
-    <div class="form-oob-search">
-        <div class="form-row mb-2 mt-2">
 
-            <div class="col-md-2">
-                <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">ECO Num</span>
-                    </div>
-                    <input name="eco_num" class="form-control" id="eco_num"  ng-model="model.eco_num" AUTOCOMPLETE="OFF">
-                </div>
-            </div>
+  <!-- 为递交数据进数据库做准备-->
 
-            <div class="col-md-2">
-                <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Model</span>
-                    </div>
-                    <input name="model" class="form-control" id="model"  ng-model="model.model" AUTOCOMPLETE="OFF">
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="input-group input-group-sm">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">Status</span>
-                    </div>
-                    <select class="form-control" name="status" id="status" ng-model="model.status" ng-options="o.id as o.name for o in status" ng-change="searchData('status')">
-                        <option value="" selected>--Please choose--</option>
-                    </select>
-                </div>
-            </div>
 
-            <div class="">
-                <button type="button" class="btn btn-info btn-sm" id="search"><i class="fa fa-search" aria-hidden="true"></i>  Search  </button>
-                <button type="button" class="btn btn-info btn-sm" id="more_search" data-toggle="collapse" data-target="#collapseSearch" aria-expanded="false" aria-controls="collapseSearch"><i class="fa fa-search-plus"></i>  More Search  </button>
-            </div>
-        </div>
-        <div class="collapse" id="collapseSearch">
-            <div class="form-row mb-2 mt-2">
-                <div class="col-md-2">
-                    <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Site</span>
-                        </div>
-                        <select class="form-control" name="birth" id="birth" ng-model="model.birth">
-                            <option value="all">--Please choose--</option>
-                            <option value="SZ">SZ</option>
-                            <option value="F/O">F/O</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Factory</span>
-                        </div>
-                        <select class="form-control" name="factory" id="factory" ng-model="model.factory" ng-options="o.id as o.name for o in factory" ng-change="searchData('factory')" ></select>
+    <form action="LinktoDatabase.php" method="post">
 
-                    </div>
-                </div>
+     <div>
 
-                <div class="col-md-2">
-                    <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Start date</span>
-                        </div>
-                        <input class="form-control" name="start_date" id="start_date" autocomplete="off" ng-model="model.start_date" onChange="" ng-change="searchData('date')">
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="input-group input-group-sm">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">End date</span>
-                        </div>
-                        <input class="form-control" name="end_date" id="end_date" autocomplete="off" ng-model="model.end_date" onChange="" ng-change="searchData('date')">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- 数据表格 -->
-    <table id="data_list"></table>
+    <!-- 新建 report engineer name -->
+      <label for = "CTENGNAME">Report Engineer Name: </label>
+      <input type="text" id ="CTENGNAME" value="Please add the report engineer name" size="30"   
+      onmouseover=this.focus();this.select();   
+      onclick="if(value==defaultValue){value='';this.style.color='#000'}"   
+      onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:rgb(200, 200, 200)" />
+      &nbsp &nbsp &nbsp &nbsp
 
-</div>
 
-</main>
-<!--jquery-->
-<script src="/static/js/jquery-3.3.1.min.js"></script>
-<!--layer-->
-<script src="/static/js/layer-3.1.1/layer.js"></script>
-<!--layui-->
-<script src="/static/layui/layui.js"></script>
-<!--popper-->
-<script src="/static/js/popper.js"></script>
-<!--bootstrap-->
-<script src="/static/js/bootstrap-4.1.3/js/bootstrap.js"></script>
-<!-- bootstrap-table -->
-<script src="/static/js/bootstrap-table-1.12.1/bootstrap-table.min.js"></script>
-<!-- 时间控件 -->
-<script src="/static/js/My97DatePicker/WdatePicker.js"></script>
-<!--Angular-->
-<script src="/static/oob/angular.min.js"></script>
-<!--表格导出Excel-->
-<script src="/static/js/export/base64.min.js"></script>
-<script src="/static/js/export/tableExport.js"></script>
-<!--Input绑定表格-->
-<script src="/static/js/fs.js?v=2022.01.19&a=220815105529"></script>
-<!--表格编辑-->
-<script src="/static/js/bst.js"></script>
-<script src="/static/js/bsEdit.js"></script>
-<!--自定义JS-->
-<script src="/static/oob/oob.js?v=2022.01.19"></script>
-<script src="/static/oob/format_txt.js?v=2022.01.19"></script>
-<script src="/static/oob/app.js?v=2022.01.19"></script>
-<script>window.ROOT_URL='__PUBLIC__';</script>
-<script>
-    //当前用户
-    let current_user = 2775;
-    let is_admin = 0;
-    let is_gaffer = 0;
-    let plan_date = '2022-08-15';
-</script>
-<!--当前页面JS-->
-
-<script>
-    let PageConfig = {
-        Title:'Request Data ',
-        SortName:'eco_num',
-        SortOrder:'desc',
-        Area: ['90%', '90%'],
-        TableId: 'data_list',
-        SearchDataUrl:'/oob/ecostatistics/drop_down',//绑定下拉
-        GetListUrl: '/oob/ecostatistics/data_list',//加载数据
-        TableColumns:[
-           // {field: '', checkbox: true, align: 'center', valign: 'middle',width:IdWidth, },
-            {title: 'Num', field: 'id', align: 'center', valign: 'middle', width:IdWidth, formatter: formatTxt.formatNoTxt },
-            {title: 'ECO Num', field: 'eco_num', align: 'center', valign: 'middle', width:DPPMWidth, sortable: true, },
-            {title: 'Site', field: 'type', align: 'center', valign: 'middle', width:LineWidth, sortable:true, },
-            {title: 'Factory', field: 'factory', align: 'center', valign: 'middle', width:110, sortable:true, },
-            {title: 'Affected </br> Model', field: 'model', align: 'center', valign: 'middle', width:RejectionStateWidth, sortable:true,},
-            {title: 'Description of </br> the change', field: 'description', align: 'center', valign: 'middle', width:PerWith, sortable:true, formatter: formatTxt.formatTipsValueTxt(30)},
-            {title: 'Purpose for </br> this change',field: 'purpose', align: 'center', valign: 'middle', width: PerWith, sortable:true, formatter: formatTxt.formatTipsValueTxt(30) },
-            {title: 'Status',field: 'status', align: 'center', valign: 'middle', width: NumberWidth}
-        ],
-        ItemGetListUrl:'/oob/ecostatistics/data_list_son',
-        ItemTableColumns:[
-            {title: 'Model', field: 'model', align: 'center', valign: 'middle', width:DispositionWidth,  },
-            {title: 'FGs Cut in Date',field: 'cut_in_date', align: 'center', valign: 'middle', width: NumberWidth,  },
-            {title: 'P/N',field: 'matnr', align: 'center', valign: 'middle', width: UserNameWidth,  },
-            {title: 'Location',field: 'location', align: 'center', valign: 'middle', width: RemarkWidth,  },
-            {title: 'Change Type', field: 'type', align: 'center', valign: 'middle', width:NumberWidth,  },
-            {title: 'Material Effective </br> Date',field: 'effective_date', align: 'center', valign: 'middle', width: DispositionWidth, },
-            {title: 'Disposition', field: 'disposition', align: 'center', valign: 'middle', width:NumberWidth,  },
-            {title: 'Old Material </br> P/N', field: 'old_material', align: 'center', valign: 'middle', width:RemarkWidth,  },
-            {title: 'Old Material </br> Rev', field: 'old_rev', align: 'center', valign: 'middle', width:RemarkWidth, },
-            {title: 'New Material </br> P/N', field: 'new_material', align: 'center', valign: 'middle', width:NumberWidth,  },
-            {title: 'New Material </br> Rev',field: 'new_rev', align: 'center', valign: 'middle', width: NumberWidth,   },
-            {title: 'Comments',field: 'comments', align: 'center', valign: 'middle', width: RemarkWidth, formatter: formatTxt.formatTipsValueTxt(15)},
-        ],
-
-    }
-</script>
-<script>
-    //按钮权限
-
-    app.controller("rejectionIndexController", function($scope,$http) {
-
-        //绑定下拉框
-        $scope.factory = [];
-        $scope.show_dc=[{'id':'','name':'--Please choose--'},{'id':'Show','name':'Show'},{'id':'Hidden','name':'Hidden'}];
-        $scope.status=[{'id':'Open','name':'Open'},{'id':'On-Going','name':'On-Going'},{'id':'Closed','name':'Closed'}];
-        //给表个查询
-        $scope.model = {
-            model: '',
-            factory:'',
-            status:'',
-            birth:'all',
-            start_date:'',
-            end_date:'',
-        };
-        //  绑定下拉框
-        $scope.searchData = function(type){
-            $http({
-                method: 'POST',
-                url: PageConfig.SearchDataUrl,
-                cache: false,
-                params: $scope.model
-            }).success(function (result, status, headers, config) {
-                result['factory'].unshift({"id":'',"name":"--Please choose--"});
-                $scope.factory =  result['factory'];
-            }).error(function (result, status, headers, config) {
-                oob.showEnglish({code:-1,msg:"请求过程中发生异常"});
-            });
-        };
-        $(function () {
-            //初始化搜索条件
-            $scope.searchData('');
-            //初始化表格
-            $('#'+ PageConfig.TableId).bootstrapTable({
-                url: PageConfig.GetListUrl,
-                method: 'get',
-                theadClasses:'thead-light',
-                rememberOrder:true,
-                cache: false,
-                sidePagination: 'server',
-                //是否启用点击选中行
-                queryParams:  function(params){
-                    $.extend( true, params, $scope.model );
-                    return params;
-                },
-                pagination: true,
-                pageNumber:1,
-                pageSize: 25,
-                pageList: [10, 25, 50, 100,],
-                clickToSelect: true,
-                sortName:'id',
-                sortOrder:'DESC',
-                columns: PageConfig.TableColumns,
-                detailView: true,//父子表
-                onExpandRow: function (index, row, $detail) {
-                    //展开视图
-                    $($detail.html('<table id="'+ row.id +'"></table>').find('table')).bootstrapTable({
-                        url: PageConfig.ItemGetListUrl,
-                        method: 'get',
-                        striped: true,
-                        theadClasses:'thead-light',
-                        rememberOrder:true,
-                        cache: false,
-                        queryParams:  function(params){
-
-                            params.id = row.id;
-                            return params;
-                        },
-                        clickToSelect: true,
-                        uniqueId: "id",
-                        columns: PageConfig.ItemTableColumns,
-                        onLoadSuccess: function () {
-                            //  $(".table-striped").attr('id',row.id);
-                            //设置表格宽度
-                        }
-                    });
-                },
-                onCollapseRow:function (index, row){
-                    //关闭试图
-                },
-            });
-        });
-    });
-</script>
-
-<script>
-
-    //初始话参数
-    let config = {
-        Title: PageConfig.Title ? PageConfig.Title : '',
-        TableId: PageConfig.TableId ? '#' + PageConfig.TableId : '',
-        GetListUrl: PageConfig.GetListUrl ? PageConfig.GetListUrl : '',
-        SortName: PageConfig.SortName ? PageConfig.SortName : 'create_date',
-        SortOrder: PageConfig.SortOrder ? PageConfig.SortOrder : 'DESC',
-        Area: PageConfig.Area ? PageConfig.Area : ['800px','500px'],
-        InfoUrl: PageConfig.InfoUrl ? PageConfig.InfoUrl : '',
-        DeleteUrl: PageConfig.DeleteUrl ? PageConfig.DeleteUrl : '',
-        AuditUrl: PageConfig.AuditUrl ? PageConfig.AuditUrl : '',
-        ImportUrl: PageConfig.ImportUrl ? PageConfig.ImportUrl : '',
-        ImportDetailUrl: PageConfig.ImportDetailUrl ? PageConfig.ImportDetailUrl : '',
-        ImportFileUrl: PageConfig.ImportFileUrl ? PageConfig.ImportFileUrl : '',
-        TemplateUrl: PageConfig.TemplateUrl ? PageConfig.TemplateUrl : '',
-        TableColumns: PageConfig.TableColumns ? PageConfig.TableColumns : [],
-        IsTableHeight: typeof (PageConfig.IsTableHeight) != 'undefined' ? PageConfig.IsTableHeight : true,
-    };
+     <!-- 新建 report Date -->
+      <label for = "date">Report Date:</label>
+      <input type="date" id ="CTDATE" 
+      onmouseover=this.focus();this.select();   
+      onclick="if(value==defaultValue){value='';this.style.color='#000'}"   
+      onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:rgb(200, 200, 200)" />
     
-    //刷新当前页面
-    function bind(){
-        $(config.TableId).bootstrapTable("refresh");
-    }
-    //回车事件
-    $('input').keydown(function(e){
-        if(e.keyCode==13){
-            bind();
-        }
-    });
-    //搜索按钮
-    $('body').on('click','#search',function () {
-        bind();
-    });
-    let TableHeight = 0;
-    $('#collapseSearch').on('shown.bs.collapse', function () {
-        oob.tableFit(config.TableId);
-    });
-    $('#collapseSearch').on('hidden.bs.collapse', function () {
-        oob.tableFit(config.TableId);
-    });
-    //新增按钮
-    $('body').on('click','#add',function () {
-        layer.open({
-            title: config.Title+'新增', type: 2, area: config.Area, fix: true, maxmin: false
-            , content: config.InfoUrl+'?id=0',
-        });
-    });
-    //编辑按钮
-    $('body').on('click','#edit',function () {
-        let rows = $(config.TableId).bootstrapTable("getAllSelections");
-        if(rows.length == 0){
-            oob.show({code:-1,msg:"您没有选中任何项,请您选中后再操作。"});
-            return false;
-        }
-        if(rows.length > 1){
-            oob.show({code:-1,msg:"很抱歉,一次只能选择一条记录。"});
-            return false;
-        }
-        layer.open({
-            title: config.Title+'编辑', type: 2, area: config.Area, fix: true, maxmin: false
-            , content: config.InfoUrl+'?id='+rows[0]['id'],
-        });
-    });
-    //删除按钮
-    $('body').on('click','#delete',function () {
-        let rows = $(config.TableId).bootstrapTable("getAllSelections");
-        if(rows.length == 0){
-            oob.show({code:-1,msg:"请勾选要删除的行"});
-            return false;
-        }
-        let data = [];
-        let rowsLength = rows.length;
-        for (let i=0;i<rowsLength;i++){
-            data.push(rows[i]["id"]);
-        }
-        layer.confirm('确认要删除这'+ data.length +'条选中的行吗？', {
-            btn: ['确定','取消']
-        }, function(){
-            oob.ajax({
-                url:config.DeleteUrl,
-                type:"post",
-                data:{"ids":data}
-            }).then(function(data){
-                oob.show(data);
-                if(data.code == 0){
-                    bind();
-                }
-            });
-        });
-    });
-    //审核按钮
-    $('body').on('click','#audit',function () {
-        let rows = $(config.TableId).bootstrapTable("getAllSelections");
-        if(rows.length == 0){
-            oob.show({code:-1,msg:"请勾选要审核的行"});
-            return false;
-        }
-        let html = '<div class="form-check form-check-inline">\n' +
-            '        <input class="form-check-input" type="radio" id="audit_state_yes" value="1" name="audit_state">\n' +
-            '        <label class="form-check-label" for="audit_state_yes">审核通过</label>\n' +
-            '    </div>\n' +
-            '    <div class="form-check form-check-inline">\n' +
-            '        <input class="form-check-input" type="radio" id="audit_state_no" value="2" name="audit_state">\n' +
-            '        <label class="form-check-label" for="audit_state_no">审核不通过</label>\n' +
-            '    </div>';
-        layer.confirm(html , function(index){
-            let value = $('[name="audit_state"]:checked').val();
-            if(typeof (value) == 'undefined'){
-                oob.show({code:-1,msg:"请选择审核状态"});
-                layer.close(index);
-                return false;
-            }
-            let stateMsg = value == 1 ? '审核通过':'审核不通过';
-            layer.confirm('确定要将选中的行置为'+ stateMsg + '状态吗？', {icon: 3, title:'提示'}, function(index_is){
+    </div>
 
-                let data = [];
-                let rowsLength = rows.length;
-                for (let i=0;i<rowsLength;i++){
-                    data.push(rows[i]["id"]);
-                }
-                oob.ajax({
-                    url:config.AuditUrl,
-                    type:"post",
-                    data:{"ids":data,'audit_state':value}
-                }).then(function(data){
-                    oob.show(data);
-                    if(data.code == 0){
-                        bind();
-                    }
-                });
-                layer.close(index_is);
-            });
-            layer.close(index);
-        });
-    });
-    //Excel导入
-    layui.use('upload', function(){
-        layui.upload.render({
-            elem: '#import'
-            ,url: config.ImportUrl
-            ,accept: 'file'
-            ,exts: 'xls|xlsx'
-            ,before: function(){
-                layer.load(2 ,{ icon: 2 ,shade: 0.1 });
-            }
-            ,done: function(data){
-                layer.closeAll();
-                oob.show(data);
-                if(data.code == 0){
-                    bind();
-                }
-            }
-            ,error: function(data){
-                layer.closeAll();
-                oob.show({code:-1,msg:"请求过程中发生异常；"+data});
-            }
-        });
-    });
-    //上传文件
-    $("body").on("click", "[data-upload]", function () {
-        var index = $(this).data("index");
-        var data1 = $(config.TableId).bootstrapTable("getData");
-        var rel = data1[index]['attachment'];
-        var matnr = data1[index]['matnr'];
-        oob.uploadView(rel, "no", matnr);
-    });
-    //模板下载
-    $('body').on('click','#template',function () {
-        let a = $("<a href='"+ config.TemplateUrl +"' target='_blank'></a>").get(0);
-        let e = document.createEvent('MouseEvents');
-        e.initEvent( 'click', true, true );
-        a.dispatchEvent(e);
-    });
-    let TableInit = function ($scope) {
-        let oTableInit = new Object();
-        oTableInit.Init = function () {
-            $(config.TableId).bootstrapTable({
-                url: config.GetListUrl,
-                method: 'get',
-                //是否显示行间隔色
-                striped: true,
-                theadClasses:'thead-light',
-                rememberOrder:true,
-                cache: false,
-                sidePagination: 'server',
-                queryParams:  function(params){
-                    $.extend( true, params, $scope.model );
-                    return params;
-                },
-                contentType: "application/x-www-form-urlencoded",
-                pagination: true,
-                pageNumber:1,
-                pageSize: 12,
-                pageList: [10, 25, 50, 100, 500, 'All'],
-                //是否启用点击选中行
-                clickToSelect: true,
-                uniqueId: "id",
-                sortName:config.SortName,
-                sortOrder:config.SortOrder,
-                columns: config.TableColumns,
-            });
+<!-- 空行 -->
+<br>
 
-        };
-        return oTableInit;
-    };
-    $(function () {
-        if(config.IsTableHeight){
-            oob.tableFit(config.TableId);
-        }
-    });
-</script>
+  <div>
+  <!-- 新建 report Part Name -->
+  <label for = "CTPTNAME">Report Part Name:   &nbsp &nbsp &nbsp &nbsp</label>
+  <input type="text" name="CTPTNAME"  value="Please add part name,eg. Top case" size="30"   
+  onmouseover=this.focus();this.select();   
+  onclick="if(value==defaultValue){value='';this.style.color='#000'}"   
+  onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:rgb(200, 200, 200)" />
+
+
+
+  <!-- 新建 report issue Type -->
+<label for = "CTISTYPE"> &nbsp &nbsp &nbsp &nbsp Report Type: </label>
+  <select id ="CTISTYPE">
+  <option value ="1" selected > Please select report issue type   &nbsp &nbsp &nbsp  &nbsp </option>
+  <option value ="2" >Design issue</option>
+  <option value="3">Assembly issue</option>
+  <option value="4">Measurement issue</option>
+  <option value="5">Test/Validation setup issue</option>
+  </select>
+
+  </div>
+
+<!-- 空行 -->
+<br>
+
+<div>
+ <!-- 新建 report Description -->
+Report Detail descriptions: 
+</div>
+
+<div>
+ <textarea 
+ name="CTDESCRIP" 
+ style="min-height: 100px; min-width: 750px;max-height: 100px; max-width: 750px;"
+placeholder ="Please add report descriptions here, multi-line free text"
+onmouseover=this.focus();this.select();   
+onclick="if(value==defaultValue){value='';this.style.color='#000'}"   
+onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:rgb(200, 200, 200)" />
+</textarea>
+</div>
+
+  <!-- 空行 -->
+  <br>
+
+
+
+
+
+
+<!-- Create button -->
+
+   <input type="submit" value = "submitfdsafdsa" name = "submit" /> &nbsp; Click to add report data into datebase
+
+   </form>
+
+
+
+
+
+
+
+
+
+   
+
+<!-- 空行 -->
+<br>
+
+
+
+  <!---- ------------------------------------------------------------------------------------------>
+
+  <!-- 紫色分割线 -->
+ <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>
+
+
+
+
+  <!---- ------------------------------------------------------------------------------------------>
+
+<!-- 中下部蓝色 Search form -->
+ <div 
+  style="color: rgb(255, 255, 255); background: rgb(36, 148, 242); border: 0px dashed currentcolor; text-align:left">
+<h3><span style="color: #ffffff; font-size: 25px; float:none; ">Search xxxx Data Form</span></h3>
+</div>
+
+    <!-- 搜索report engineer name -->
+      <div> Search data by Report Engineer Name: 
+        <input name="SCENGNAME" type="text" id="SCENGNAME" value="Please select the engineer name your want to search" size="70"   
+        onmouseover=this.focus();this.select();   
+        onclick="if(value==defaultValue){value='';this.style.color='#000'}"   
+        onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:rgb(200, 200, 200)" />
+    </div>
+
+<!-- 空行 -->
+<br>
+
+    <!-- 搜索 Related Part name -->
+    <div> Search data by Related Part name:&nbsp &nbsp &nbsp &nbsp
+        <input name="SCPTNAME" type="text" id="SCPTNAME" value="Please select the part name your want to search" size="70"   
+        onmouseover=this.focus();this.select();   
+        onclick="if(value==defaultValue){value='';this.style.color='#000'}"   
+        onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:rgb(200, 200, 200)" />
+    </div>
+
+<!-- 空行 -->
+<br>
+
+
+    <!-- 搜索 report issue Type -->
+    <div> Search data by Related Issue Type:&nbsp &nbsp &nbsp
+      <select id="SCISTYPE">
+      <option value => Please select report issue type for search &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp  &nbsp &nbsp &nbsp &nbsp  &nbsp </option>
+      <option value =>Design issue</option>
+      <option value=>Assembly issue</option>
+      <option value=>Measurement issue</option>
+      <option value=>Test/Validation setup issue</option>
+      </select>
+    
+      </div>
+  </div>
+
+<!-- 空行 -->
+<br>
+
+
+    <div> Search data by Report Description:&nbsp &nbsp &nbsp
+      <input name="SCDESCRIP" type="text" id="SCDESCRIP" value="Please add report descriptions your want to search" size="70"   
+      onmouseover=this.focus();this.select();   
+      onclick="if(value==defaultValue){value='';this.style.color='#000'}"   
+      onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:rgb(200, 200, 200)" />
+  </div>
+
+<!-- 空行 -->
+<br>
+
+<!-- search button -->
+
+<div>
+<input type=button value="Click to Show Search Result" onclick="open_search()" />
+</div>
+
+<!-- 空行 -->
+<br>
+
+
+  <!-- 紫色分割线 -->
+  <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>
+
+
 </body>
+
 </html>
+
+
+
+<!-- Script for open search window -->
+<script type="text/javascript">
+  function open_search() 
+  {
+  window.open("http://www.w3school.com.cn")
+  }
+  </script>
