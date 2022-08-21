@@ -59,7 +59,10 @@
     <script src="/static/js/fs.js?ver=34522081601"></script>
     <script src="/static/js/crypto/base64.js"></script>
 
+   
     </head>
+
+    <link rel="shortcut icon" href="/HXICO.png" type="image/png" />
 
     <title>Logitech CP&G ME xxxx Data list</title>
 
@@ -108,22 +111,22 @@
   <!-- 为递交数据进数据库做准备-->
 
 
-    <form action="LinktoDatabase.php" method="post">
+    <form action="http://localhost/LinktoDatabase.php" method="post">
 
      <div>
 
-    <!-- 新建 report engineer name -->
+    <!-- 01-新建 report engineer name -->
       <label for = "CTENGNAME">Report Engineer Name: </label>
-      <input type="text" id ="CTENGNAME" value="Please add the report engineer name" size="30"   
+      <input type="text" id ="CTENGNAME" name ="CTENGNAME" value="Please add the report engineer name" size="30"   
       onmouseover=this.focus();this.select();   
       onclick="if(value==defaultValue){value='';this.style.color='#000'}"   
       onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:rgb(200, 200, 200)" />
       &nbsp &nbsp &nbsp &nbsp
 
 
-     <!-- 新建 report Date -->
+     <!-- 02-新建 report Date -->
       <label for = "date">Report Date:</label>
-      <input type="date" id ="CTDATE" 
+      <input type="date" id ="CTDATE" name ="CTDATE" 
       onmouseover=this.focus();this.select();   
       onclick="if(value==defaultValue){value='';this.style.color='#000'}"   
       onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:rgb(200, 200, 200)" />
@@ -134,23 +137,23 @@
 <br>
 
   <div>
-  <!-- 新建 report Part Name -->
+  <!-- 03-新建 report Part Name -->
   <label for = "CTPTNAME">Report Part Name:   &nbsp &nbsp &nbsp &nbsp</label>
-  <input type="text" name="CTPTNAME"  value="Please add part name,eg. Top case" size="30"   
+  <input type="text" id ="CTPTNAME" name ="CTPTNAME" value="Please add part name,eg. Top case" size="30"   
   onmouseover=this.focus();this.select();   
   onclick="if(value==defaultValue){value='';this.style.color='#000'}"   
   onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:rgb(200, 200, 200)" />
 
 
 
-  <!-- 新建 report issue Type -->
+  <!-- 04-新建 report issue Type -->
 <label for = "CTISTYPE"> &nbsp &nbsp &nbsp &nbsp Report Type: </label>
-  <select id ="CTISTYPE">
-  <option value ="1" selected > Please select report issue type   &nbsp &nbsp &nbsp  &nbsp </option>
-  <option value ="2" >Design issue</option>
-  <option value="3">Assembly issue</option>
-  <option value="4">Measurement issue</option>
-  <option value="5">Test/Validation setup issue</option>
+  <select id ="CTISTYPE" name ="CTISTYPE">
+  <option value = "Other" selected >Please select report issue type   &nbsp &nbsp &nbsp  &nbsp </option>
+  <option value = "Design issue" >Design issue</option>
+  <option value= "Assembly issue" >Assembly issue</option>
+  <option value= "Measurement issue" >Measurement issue</option>
+  <option value= "Test/Validation setup issue" >Test/Validation setup issue</option>
   </select>
 
   </div>
@@ -159,14 +162,14 @@
 <br>
 
 <div>
- <!-- 新建 report Description -->
-Report Detail descriptions: 
+ <!-- 05-新建 report Description -->
+<label for = "CTDESCRIP" >Report Detail descriptions: </label>
 </div>
 
 <div>
- <textarea 
- name="CTDESCRIP" 
- style="min-height: 100px; min-width: 750px;max-height: 100px; max-width: 750px;"
+<textarea 
+id="CTDESCRIP" name ="CTDESCRIP" 
+style="min-height: 100px; min-width: 750px;max-height: 100px; max-width: 750px;"
 placeholder ="Please add report descriptions here, multi-line free text"
 onmouseover=this.focus();this.select();   
 onclick="if(value==defaultValue){value='';this.style.color='#000'}"   
@@ -184,18 +187,9 @@ onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:rgb
 
 <!-- Create button -->
 
-   <input type="submit" value = "submitfdsafdsa" name = "submit" /> &nbsp; Click to add report data into datebase
+   <input type="submit" value = "Submit the data" name = "submit" /> &nbsp; Click to add report data into datebase
 
    </form>
-
-
-
-
-
-
-
-
-
    
 
 <!-- 空行 -->
@@ -207,8 +201,6 @@ onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:rgb
 
   <!-- 紫色分割线 -->
  <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>
-
-
 
 
   <!---- ------------------------------------------------------------------------------------------>
@@ -283,9 +275,27 @@ onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:rgb
   <HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>
 
 
+
+
+<!-- 下部蓝色 data base display form -->
+<div 
+style="color: rgb(255, 255, 255); background: rgb(36, 148, 242); border: 0px dashed currentcolor; text-align:left">
+<p>
+  <vi style="color:rgb(255, 255, 255);font-size:25px;font-weight:bold;"> Report in Current Database</vi>
+  <vi style="color:rgb(31, 24, 222);font-size:15px;font-weight:bold;"> &nbsp; &nbsp; Data will refresh automatically</vi>
+</p>
+</div>
+
+
 </body>
 
 </html>
+
+
+
+
+
+
 
 
 
