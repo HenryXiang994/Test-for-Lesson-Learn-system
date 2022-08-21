@@ -1,3 +1,25 @@
+<?php
+$host = "localhost";
+$userName = "root";
+$userPass = "";
+$database = "nettest";
+
+$connectQuery = mysqli_connect($host,$userName,$userPass,$database);
+
+if(mysqli_connect_errno()){
+    echo mysqli_connect_error();
+    exit();
+}else{
+    $selectQuery = "SELECT * FROM `nettestform` ORDER BY `itemid` DESC";
+    $result = mysqli_query($connectQuery,$selectQuery);
+    if(mysqli_num_rows($result) > 0){
+    }else{
+        $msg = "No Record found";
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 
 <!-- 界面普通的网站？？技术网站并不关注界面-->
@@ -59,16 +81,28 @@
     <script src="/static/js/fs.js?ver=34522081601"></script>
     <script src="/static/js/crypto/base64.js"></script>
 
+
+
+
+
    
-    </head>
+    <!--标题栏和网页Logi ico -->
 
     <link rel="shortcut icon" href="/HXICO.png" type="image/png" />
 
     <title>Logitech CP&G ME xxxx Data list</title>
 
-    <body onload="timenow()">
 
 
+
+
+</head>
+
+
+
+
+
+      
 
     <!--ID List -->
     <!--Create report engineer name: CTENGNAME >
@@ -87,7 +121,17 @@
 
     <!- ------------------------------------------------------------------------------------------>
 
+<body>
 
+
+  <style type = "text/css">
+    body{
+    background-image: url(background.png);
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    }
+
+</style>
 
     <!-- 顶部蓝色标题栏 -->
       <div 
@@ -180,7 +224,7 @@ onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:rgb
   <!-- 空行 -->
   <br>
 
-   
+
 
 
 
@@ -287,12 +331,55 @@ style="color: rgb(255, 255, 255); background: rgb(36, 148, 242); border: 0px das
 </div>
 
 
+<style type="text/css">
+  h1{
+    text-align: left;
+  }
+table{
+border-collapse:collapse;border-spacing:0;border-left:1px solid #888;border-top:1px solid #888;background:#ffffff;}
+
+th{border-right:1px solid #888 ;border-bottom:1px solid #888;padding:1px 5px;}
+th{font-size: 16px; font-weight:lighter;background:rgb(232, 229, 229);}
+
+td{border-right:1px solid #888;border-bottom:1px solid #888;padding:1px 1px;}
+
+</style>
+
+
+<table border="1px">
+  <thead>
+      <tr>
+<th>Item Index</th>
+<th>Report Receive Date</th>
+<th>Report Engineer Name</th>
+<th>Report Part Name</th>
+<th>Report Issue Type</th>
+<th>Report Descriptions</th>
+      </tr>
+  </thead>
+  <tbody>
+      <?php
+          while($row = mysqli_fetch_assoc($result)){?>
+          <tr>
+              <td><?php echo $row['itemid']; ?></td>
+              <td><?php echo $row['reportdate']; ?></td>
+              <td><?php echo $row['reportengineername']; ?></td>
+              <td><?php echo $row['reportpartname']; ?></td>
+              <td><?php echo $row['reportissuetype']; ?></td>
+              <td><?php echo $row['reportdescription']; ?></td>
+          <tr>
+      <?}?>
+  </tbody>
+</table>
+
+
+
+
+
+
+
 </body>
-
 </html>
-
-
-
 
 
 
