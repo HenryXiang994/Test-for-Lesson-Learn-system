@@ -180,7 +180,35 @@ onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:rgb
   <!-- 空行 -->
   <br>
 
-
+          
+          
+          
+          
+	<?PHP 
+			/*链接数据库*/
+			$con = MysqL_connect('localhost','root','');
+			/*链接数据表*/
+			$db_selected = MysqL_select_db('users',$con);
+			/*定义编码格式*/
+			MysqL_query('set names utf8');
+			$sql = 'select * from userList';
+			$res = MysqL_query($sql);
+			/*长度*/
+			$num=MysqL_num_rows($res);
+			for($i=0;$i<$num;$i++)
+			{
+				$sql_arr=MysqL_fetch_assoc($res);
+				$ID = $sql_arr['ID'];
+				$username = $sql_arr['username'];
+				$age = $sql_arr['age'];
+				$sex = $sql_arr['sex'];
+				echo "<tr><td>$ID</td><td>$username</td><td>$age</td><td>$sex</td></tr>";
+			}	
+		?>
+          
+          
+          
+          
 
 
 
