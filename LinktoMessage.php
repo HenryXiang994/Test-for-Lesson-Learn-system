@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost","root", "","nettest");
+$conn = mysqli_connect("localhost","root", "Bi1OiEIBqEvmQFvS","nettest");
 if (!$conn) {
 die("链接失败, 服务器未响应, 请联系Henry Xiang开启服务器 ". mysqli_connect_error());
 }
