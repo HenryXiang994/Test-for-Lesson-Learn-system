@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+<h5><span style="color: #a606d2bd; font-size: 20px; float:none; ">备注</span></h5>
+
+<input type="button"  style="background-color:#E6E6E6; border-radius: 5px; color:#5F9EA0; 
+font-size: 15px; border-color:#5F9EA0; border-style: ridge; "  value="《Back to Home Page》" size="25"  
+
+onclick = "window.location.href = 'http://localhost/Mainpage.php'"/>
+
+<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3>
+Creator: Henry Xiang
+<br>Create Date: 2022-08-18 ~ 2022-08-28
+<br>
+<br>
+<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=3)" width="100%" color=#987cb9 SIZE=3> 
+<span style="color: #a606d2bd; font-size: 20px; float:none; ">Design notes:</span>
+<br>--- Major tool are: VScode ； HTML Language；PHP Language；Javascript Language；Wampserver；PHPAdmin；MYSQL; Echarts...
+<br>--- Use VScode software to edit HTML language to create pages
+<br>--- Html文件在VScode里面可以直接按：Ctrl+1，打开浏览器预览 （需要下载安装插件“open in browser”
+<br>--- PHP文件为服务器文件，不能直接打开，在浏览器中输入地址打开：如 http://localhost/Testchartshtml.php
+<br>--- Right click on page, and Use "View page source" to see the codes
+<br>--- Use CSS code to define the style of words
+<br>--- Use "Input" to create different text box
+<br>--- Use "ID" name to transfer data in code
+<br><span style="color:#062bfaea;">--- 使用 "WAMPSever" package to setup enviroment of "Apache; "PHP"; "MySQL" for database (关键步骤) </span>
+<br>--- Use "Submit" input type to send data from HTML to MySQL data base
+<br>--- 有时候"Submit" 按钮可能没反应，需要更改PHP文件 地址为全称：http://localhost/LinktoDatabase.php
+<br>--- PHP 语言有大小写，比如“$_POST" 必须大小，否则不能执行,比如echarts饼图里面的“name"不能大写，否则报错
+<br>--- PHP 配置文件php.ini，要将：short_open_tag = Off #默认值改成ON，要不然不能嵌套HTML
+<br>--- HTML 不能 集成 PHP， 而PHP文件能集成HTML， 所以在首页Index.html中，直接建立一个PHP文件的跳转 window.location = xxx
+<br>--- 根据SQL select 语句得到各种需要的筛选条件结果，使用mysqli_query得到数据库数据，为 数据格式
+<br>--- <span style="color:#062bfaea;">在PHP语言中：使用 json_encode 对MYSQL 获得数据进行JSON编码， (关键步骤) </span>
+<br>--- 在HTML语言中使用Echo 函数 获得PHP 数据库查询结果，此结果可以直接被Echarts图表所使用
+<br>--- 留言板也是用数据服务器的功能，与上面的数据系统方法一致。
+<br>
+<!-- <img src="PHPMyAdmin-Messageboard.jpg" /> -->
+<!-- <img src="C:\0My\Netpage\Wampserver3.2.6-install\www\PHPMyAdmin-Messageboard.jpg"/> -->
+
+<img src="file:///C:/0My/Netpage/Wampserver3.2.6-install/www/PHPMyAdmin-Messageboard.jpg" >
+
+</body>
