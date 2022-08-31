@@ -3,7 +3,7 @@
 <?php
 $host = "localhost";
 $userName = "root";
-$userPass = "";
+$userPass = "Bi1OiEIBqEvmQFvS";
 $database = "nettest";
 
 $connectQuery = mysqli_connect($host,$userName,$userPass,$database);
